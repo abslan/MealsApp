@@ -25,6 +25,14 @@
  */
 
 
+
+
+
+/* This code is checking if there is any data stored in the local storage with the key
+"lsDataFavMeals". If there is no data, it initializes the `favMeals` variable as an empty array and
+stores it in the local storage. If there is data, it retrieves the data from the local storage and
+parses it into an array, assigning it to the `favMeals` variable. This code is used to store and
+retrieve the favorite meals from the local storage. */
  let favMeals = localStorage.getItem("lsDataFavMeals");
  if(!favMeals){
      favMeals= [];
@@ -34,6 +42,10 @@
  }
 
 //  event listeners
+/* This code is adding an event listener to the search box element with the id "search-box". It listens
+for the "keydown" event, which occurs when a key is pressed down. If the key code of the pressed key
+is 13 (which corresponds to the Enter key), it calls the fetchMealsData() function. This allows the
+user to press Enter in the search box to fetch meals data. */
 const searchBox = document.getElementById("search-box");
 searchBox.addEventListener("keydown", (e) => {
     if(e.keyCode == 13){
@@ -41,6 +53,10 @@ searchBox.addEventListener("keydown", (e) => {
     }
 } )
 
+/**
+ * The function toggles the dimensions of an aside element and updates the class of a button icon
+ * accordingly.
+ */
 const toggleAsideDimBtn = document.getElementById("toggle-aside-icon")
 toggleAsideDimBtn.onclick = toggleAsideDimension;
 function toggleAsideDimension(){
@@ -49,6 +65,9 @@ function toggleAsideDimension(){
     document.querySelector("aside").classList.toggle("expand-aside");
 }
 
+/**
+ * The function toggles the visibility of the aside container when the toggle button is clicked.
+ */
 const toggleAsideBtn = document.getElementById("toggle-favourites")
 toggleAsideBtn.onclick = toggleAsideContainer;
 function toggleAsideContainer(){
@@ -56,20 +75,51 @@ function toggleAsideContainer(){
 }
 
 
+/**
+ * The fetchData function is an asynchronous function that fetches data from a specified URL and
+ * returns it as a JSON object.
+ * @param url - The `url` parameter is a string that represents the URL of the resource you want to
+ * fetch data from.
+ * @returns The function `fetchData` returns a Promise that resolves to a JSON object.
+ */
 const fetchData = async (url) => {
     const response = await fetch(url);
     const json = await response.json();
     return json;
 }
 
+/**
+ * The `truncate` function takes a string and a number as input and returns a truncated version of the
+ * string if it exceeds the specified length, with "..." appended at the end.
+ * @param str - The `str` parameter is a string that you want to truncate if its length exceeds a
+ * certain number of characters.
+ * @param n - The parameter `n` represents the maximum length of the string `str` after truncation.
+ * @returns a truncated version of the input string. If the length of the string is greater than the
+ * specified limit (n), it will return the first n-1 characters of the string followed by "...".
+ * Otherwise, it will return the original string.
+ */
 function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
 }
 
+/**
+ * The function checks if a given mealId is in the favMeals array.
+ * @param mealId - The `mealId` parameter is the ID of a meal.
+ * @returns a boolean value. It will return true if the mealId is found in the favMeals array, and
+ * false otherwise.
+ */
 function isFavourite(mealId) {
     return favMeals.indexOf(String(mealId))!==-1;
 }
 
+/**
+ * The function `toggleFavourite` is used to add or remove a meal from the list of favorite meals and
+ * update the UI accordingly.
+ * @param e - The parameter "e" is an event object that represents the event that triggered the
+ * function. It is typically used to access information about the event, such as the target element
+ * that triggered the event.
+ * @param id - The `id` parameter represents the unique identifier of a meal.
+ */
 async function toggleFavourite(e, id){
     let favClass = "fav-style";
     let index = favMeals.indexOf(String(id));
@@ -88,6 +138,12 @@ async function toggleFavourite(e, id){
     localStorage.setItem("lsDataFavMeals", JSON.stringify(favMeals));
 }
 
+/**
+ * The function fetchFavCard fetches a meal card from an API based on the provided id.
+ * @param id - The `id` parameter is the unique identifier of a meal. It is used to fetch the details
+ * of a specific meal from the API.
+ * @returns an HTML string that represents a meal card.
+ */
 async function fetchFavCard(id){
     const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i="+id;
     const data = await fetchData(url);
@@ -96,6 +152,9 @@ async function fetchFavCard(id){
     return html;
 }
 
+/**
+ * The function fetchAllFavCards fetches and displays favorite meal cards on a webpage.
+ */
 async function fetchAllFavCards(){
     for(var id of favMeals){
         // console.log("fetching for ", i);
@@ -104,6 +163,11 @@ async function fetchAllFavCards(){
     }
 }
 
+/**
+ * The function `updateCurrentMeal` fetches data from an API, extracts relevant information, and
+ * dynamically generates HTML to display the current meal's details.
+ * @param id - The `id` parameter is the ID of the meal that you want to update the current meal with.
+ */
 async function updateCurrentMeal(id){
     const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id;
     const data = await fetchData(url);
@@ -153,6 +217,10 @@ async function updateCurrentMeal(id){
 
 }
 
+/**
+ * The function fetches meals data from an API based on user input, generates HTML for each meal,
+ * updates the current meal, and displays the meals on the webpage.
+ */
 async function fetchMealsData() {
     console.log("loading data")
     const inputValue = document.getElementById("search-box").value;
@@ -174,7 +242,13 @@ async function fetchMealsData() {
     }
 }
 
-
+/**
+ * The `mealCard` function generates HTML code for a meal card, including an image, meal name,
+ * instructions, YouTube link, and a heart icon for favoriting the meal.
+ * @param meal - The `meal` parameter is an object that represents a meal. It has the following
+ * properties:
+ * @returns The `mealCard` function is returning a string of HTML code.
+ */
 function mealCard(meal){
     return `
     <div class="meal-card meal-card-${meal.idMeal}"> 
@@ -198,6 +272,12 @@ function mealCard(meal){
     `
 }
 
+
+/* The `//App initialization` section is responsible for initializing the application by calling the
+`fetchMealsData()` function to fetch and display meals data, and the `fetchAllFavCards()` function
+to fetch and display favorite meal cards. This section ensures that the initial data is loaded and
+displayed when the application starts. */
+//App initialization
 fetchMealsData();
 fetchAllFavCards();
 

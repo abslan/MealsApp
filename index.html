@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MEALS APP</title>
+    <link rel="stylesheet" href="src/styles.css">
+    <script src="https://kit.fontawesome.com/011c09da5f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">
+                <p>
+                    MEALS APP
+                </p>
+            </div>
+            <div >
+                <input id="search-box" type="text" placeholder="Enter Meal Name" value=""/>
+            </div>
+            <div id="nav-btns">
+                <div id="nav-menu">
+                    <i id="toggle-favourites" class="fa-solid fa-bars fa-lg"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="current-meal-card-container" >
+        </section>
+        <section id="meals-container">
+        </section>
+        <aside class="hide">
+            <div id="aside-nav">
+                <span>FAVOURITES</span>
+                <i id="toggle-aside-icon" class="fa-solid fa-expand fa-lg"></i>
+                <!-- <span id="collapse-aside-icon" class="hide"><i class="fa-solid fa-compress fa-lg"></i>/span> -->
+            </div>
+            <!-- <i id="aside-expand-left" class="fa-solid fa-caret-down fa-2xl expand-aside-icon"></i> -->
+            <div id="fav-meals-container">
+    
+            </div>
+        </aside>
+    </main>
+    <script src="src/script.js"></script>
+
+</body>
+</html>

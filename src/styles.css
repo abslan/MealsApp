@@ -1,0 +1,292 @@
+body {
+    /* margin: 1rem; */
+    font-family: sans-serif;
+    --meal-card-width : 12rem;
+    --meal-card-height : 23rem;
+    --meal-card-border-radius : 5%;
+    --current-meal-card-width : 40rem;
+    --current-meal-card-height : 20rem;
+    --current-meal-card-height-md : 15rem;
+
+
+    /* text-decorations */
+    --current-card-font-family : 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transform-style: preserve-3d;
+
+    /* aside */
+    --aside-bg-color : goldenrod;
+
+}
+
+body::-webkit-scrollbar { 
+    display: none; 
+}
+
+/* General */
+.blur{
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+}
+
+.hide{
+    visibility: hidden;
+}
+
+/* Header and Navbar */
+#logo{
+    /* font-size: 12em; */
+    font-weight: 700;
+    color: black;
+    text-shadow: 2px 5px 5px rgba(16,16,16,0.4);
+
+}
+
+#nav-menu{
+    font-weight: 700;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
+    height: 3rem;
+}
+
+#logo{
+
+}
+
+#nav-btns{
+
+}
+
+#nav-menu{
+    cursor: pointer;
+}
+
+#search-box{
+    background: #f4f6f8!important;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    color: black!important;
+    font-weight: 400;
+    outline: none;
+    padding: 12px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+
+/* Main */
+/* Meal cards container and meal card */
+#meals-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+    /* visibility: hidden; */
+    /* width: fit-content; */
+}
+
+.meal-card{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: var(--meal-card-height);
+    margin-bottom: 1rem;
+    position: relative;
+    box-shadow: 2px 5px 5px rgba(16,16,16,0.4);
+    border-radius: var(--meal-card-border-radius);
+    overflow: scroll;
+}
+
+.meal-img img{
+    width: var(--meal-card-width);
+    height: var(--meal-card-width);
+    border-radius: var(--meal-card-border-radius) var(--meal-card-border-radius) 0 0;
+}
+
+.meal-img img:hover{
+    cursor: pointer;
+}
+
+.meal-info{
+    max-width: var(--meal-card-width);
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    gap: 0.5rem;
+    padding: 0rem 0.5rem;
+    box-sizing: border-box;
+}
+
+.meal-info p{
+    margin: 0px;
+}
+
+.meal-name{
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.meal-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--meal-card-width);
+    position: absolute;
+    bottom: 0.5rem;
+    padding: 0rem 0.5rem;
+    box-sizing: border-box;
+}
+
+/* Current Meal section */
+
+#current-meal-card-container{
+    position: relative;
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 100vw;
+    z-index: 10;
+}
+
+#current-meal-card{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    height: var(--current-meal-card-height);
+    margin-bottom: 1rem;
+    width: 100%;
+    margin: auto;
+}
+
+.current-meal-img img{
+    width: 30vw;
+    height: var(--current-meal-card-height);
+}
+
+.current-meal-info{
+    /* max-width: var(--current-meal-card-width); */
+    max-height: var(--current-meal-card-height);
+    height: 90%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    gap: 0.5rem;
+    overflow: scroll;
+}
+
+.current-meal-info-container{
+    width: 63vw;
+}
+
+.current-meal-info-container>img{
+    position: absolute;
+    top:0;
+    left: 0;
+    filter: blur(0px) opacity(30%) brightness(70%);
+    z-index: -1000;
+    height: 100%;
+    width: 100%;
+}
+
+
+.current-meal-info p{
+    margin: 0px;
+    font-weight: 400;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.current-meal-info span{
+    font-weight: bold;
+}
+
+.current-meal-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* justify-content: space-between; */
+    width: var(--current-meal-card-width);
+    gap: 3rem;
+    height: 10%;
+}
+
+
+/* aside section for favourites */
+aside{
+    position: absolute;
+    top: 3rem;
+    right: -1rem;
+    background: var(--aside-bg-color);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 1rem;
+    min-width: 14rem;
+    width: 20vw;
+    z-index: 1000;
+     /* visibility: hidden; */
+}
+
+.expand-aside{
+    width: 100vw;
+    
+}
+
+#toggle-aside-icon{
+    cursor: pointer;
+}
+
+/* #aside-expand-left{
+    position: absolute;
+    left: 0px;
+    top: 50vh;
+    transform: translate(-60%, 0%) rotate(90deg);
+    color: var(--aside-bg-color);
+} */
+
+#aside-nav span{
+    margin: 1rem;
+    font-weight: 700;
+}
+
+#fav-meals-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+
+.fa-youtube{
+    color: rgb(218, 59, 59);
+}
+
+.fav-style{
+    color:rgb(218, 59, 59);
+}
+
+.hide{
+    visibility: collapse;
+}
+
+
+
+
+

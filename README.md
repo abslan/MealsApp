@@ -15,20 +15,21 @@ Single Page Layout: Used collapsible tabs and dynamic DOM manipulation to simula
 
 🧩 Tech Stack
 
-HTML5
-CSS3
-Vanilla JavaScript
-TheMealDB API
-localStorage for persistence
+- HTML5  
+- CSS3  
+- Vanilla JavaScript  
+- TheMealDB API  
+- localStorage for persistence
 
 
 🚀 How to Run
 
 🔗 Live Demo: https://abslan.github.io/MealsApp/
-Or clone the repository and open it locally:
-git clone https://github.com/abslan/MealsApp.git
-cd MealsApp
-open index.html
+Or 
+- clone the repository and open it locally:
+- git clone https://github.com/abslan/MealsApp.git
+- cd MealsApp
+- open index.html
 
 
 

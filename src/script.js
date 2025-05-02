@@ -53,6 +53,22 @@ searchBox.addEventListener("keydown", (e) => {
     }
 } )
 
+/* This code is setting up an event listener on an input element with the id
+"searchBox". When the user types into the input field, the code checks if the input value is not
+empty after trimming any whitespace. If the input is not empty, it calls the function
+"fetchMealsData" asynchronously with the input value as a parameter. If the input is empty, it
+optionally clears the content of an element with the id "meals-container"*/
+// Listen for the input event to trigger the fetch as the user types
+searchBox.addEventListener("input", async () => {
+    const inputValue = searchBox.value;
+    if (inputValue.trim() !== "") { // Ensure input isn't empty
+        await fetchMealsData(inputValue);
+    } else {
+        // Optionally clear results if input is empty
+        document.getElementById('meals-container').innerHTML = '';
+    }
+});
+
 /**
  * The function toggles the dimensions of an aside element and updates the class of a button icon
  * accordingly.

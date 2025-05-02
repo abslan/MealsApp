@@ -24,12 +24,12 @@ Single Page Layout: Used collapsible tabs and dynamic DOM manipulation to simula
 
 🚀 How to Run
 
-🔗 Live Demo: https://abslan.github.io/MealsApp/
-Or 
-- clone the repository and open it locally:
-- git clone https://github.com/abslan/MealsApp.git
-- cd MealsApp
-- open index.html
+🔗 Live Demo: https://abslan.github.io/MealsApp/<br>
+Or <br>
+clone the repository and open it locally:<br>
+git clone https://github.com/abslan/MealsApp.git<br>
+cd MealsApp <br>
+open index.html
 
 
 
